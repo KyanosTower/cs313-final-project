@@ -9,7 +9,7 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
 app.get('/form', (req, res) => res.render('pages/index'))
 
-app.get("/calculate", (req, res) => {
+app.get("/getRate", (req, res) => {
     var total = calculateRate(req);
     res.render("pages/results", { answer: total });
 });
