@@ -110,7 +110,7 @@ function calculateRate(req) {
             var total = "6.25"
         }
     }
-    console.log(pounds);
+    //console.log(pounds);
     console.log(ounces);
     console.log(mailType);
     console.log(total);
