@@ -12,9 +12,9 @@
     <h1>Postal Rate Calculator</h1>
     <form action="/getRate" method="GET">
         <p>Please enter the weight of the item (Ounces).</p>
-        <input type="number" name="weight" value="Item Weight" />
+        <input type="number" name="weight" step="any">
         <p>Please select the type.</p>
-        <select name="mailType" required>
+        <select name="mailType">
             <option value="select">Select an option.</option>
             <option value="stamped">Letters (Stamped)</option>
             <option value="metered">Letters (Metered)</option>
