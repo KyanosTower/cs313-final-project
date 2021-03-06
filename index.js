@@ -20,7 +20,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 
 function calculateRate(req) {
-    var ounces = req.query.ounces;
+    var ounces = req.query.weight;
     var mailType = req.query.mailType;
 
     if (mailType == "stamped") {
