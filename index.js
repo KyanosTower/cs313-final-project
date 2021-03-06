@@ -21,9 +21,9 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 function calculateRate(req) {
     var ounces = req.query.ounces;
-    var lettertype = req.query.lettertype;
+    var mailType = req.query.mailType;
 
-    if (lettertype == "stamped") {
+    if (mailType == "stamped") {
         if (+ounces == 1) {
             var total = "$.55";
         }
@@ -39,7 +39,7 @@ function calculateRate(req) {
         
     }
 
-    if (lettertype == "metered") {
+    if (mailType == "metered") {
         if (+ounces == 1) {
             var total = "$.51";
         }
@@ -54,7 +54,7 @@ function calculateRate(req) {
         }
     }
 
-    if (lettertype == "envelops") {
+    if (mailType == "envelops") {
         if (+ounces == 1) {
             var total = "$1.00";
         }
@@ -96,7 +96,7 @@ function calculateRate(req) {
         }
     }
 
-    if (lettertype == "retail") {
+    if (mailType == "retail") {
         if (+ounces <= 4) {
             var total = "$4.00";
         }
@@ -112,7 +112,7 @@ function calculateRate(req) {
     }
     console.log(pounds);
     console.log(ounces);
-    console.log(lettertype);
+    console.log(mailType);
     console.log(total);
 
     return total;
