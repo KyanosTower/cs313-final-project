@@ -29,7 +29,7 @@ app.get("/add", (req, res) => {
         if (err) throw err;
         res.send('Added to the Database');
     });*/
-    res.send('Data recieved succesfully');
+    res.render("pages/results", { answer: 'Data added.' });
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
