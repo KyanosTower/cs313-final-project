@@ -11,27 +11,26 @@
 <body style="text-align: center;">
     <h1>Welcome!</h1>
     <div name="add">
-    <form action="/add" method="GET">
-        <p>Enter card data here.</p>
-        <p>(Note: This will not currently actually add data, it will just send the data and display a message saying it was sent properly.)</p>
-        <input type="text" name="cardName" value="Enter Card Name"/>
-        <br><input type="text" name="seriesName" value="Enter Series Name"/>
-        <br><select name="rarity">
-            <option value="select">Select a rarity</option>
-            <option value="common">Common</option>
-            <option value="uncommon">Uncommon</option>
-            <option value="rare">Rare</option>
-            <option value="holofoil">Holofoil Rare</option>
-            <option value="ultra">Ultra Rare</option>
-            <option value="secret">Secret Rare</option>
-        </select>
-        <br><select name="evolve">
-            <option value="canIt">Can it evolve?</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
-        <br><input type="submit" name="add" value="Add to database"/>
-    </form>
+        <form action="/add" method="GET">
+            <p>Enter card data here.</p>
+            <input type="text" name="cardName" value="Enter Card Name" />
+            <br><input type="text" name="seriesName" value="Enter Series Name" />
+            <br><select name="rarity">
+                <option value="select">Select a rarity</option>
+                <option value="common">Common</option>
+                <option value="uncommon">Uncommon</option>
+                <option value="rare">Rare</option>
+                <option value="holofoil">Holofoil Rare</option>
+                <option value="ultra">Ultra Rare</option>
+                <option value="secret">Secret Rare</option>
+            </select>
+            <br><select name="evolve">
+                <option value="canIt">Can it evolve?</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <br><input type="submit" name="add" value="Add to database" />
+        </form>
     </div>
 
 </body>
