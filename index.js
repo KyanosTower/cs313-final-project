@@ -20,8 +20,8 @@ app.get('/form', (req, res) => res.render('pages/index'))
 
 app.get("/add", (req, res) => {
     var card = {
-        name: req.body.cardName,
-        series: req.body.seriesName,
+        cardName: req.body.cardName,
+        seriesName: req.body.seriesName,
         rarity: req.body.rarity,
         evolve: req.body.evolve
     }
