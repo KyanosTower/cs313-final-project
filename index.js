@@ -1,7 +1,16 @@
 const express = require('express')
+const { createConnection } = require('net')
 const path = require('path')
-const PORT = process.env.PORT || 5000
+var mysql = require('mysql');
+const PORT = process.env.PORT || 5500
 const app = express()
+
+/*var connection = mysql.createConnection({
+    host: 'localhost',
+    database: 'card'
+});
+
+connection.connect();*/
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
@@ -9,111 +18,18 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
 app.get('/form', (req, res) => res.render('pages/index'))
 
-app.get("/getRate", (req, res) => {
-    var total = calculateRate(req);
-    res.render("pages/results", { answer: total });
+app.get("/add", (req, res) => {
+    var card = {
+        name: req.body.cardName,
+        series: req.body.seriesName,
+        rarity: req.body.rarity,
+        evolve: req.body.evolve
+    }
+    /*connection.query('INSERT INTO card SET ?', card, function(err, resp) {
+        if (err) throw err;
+        res.send('Added to the Database');
+    });*/
+    res.send('Data recieved succesfully');
 });
 
-
-
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
-
-
-function calculateRate(req) {
-    var ounces = req.query.weight;
-    var mailType = req.query.mailType;
-
-    if (mailType == "stamped") {
-        if (+ounces == 1) {
-            var total = "$.55";
-        }
-        if (+ounces == 2) {
-            var total = "$.75";
-        }
-        if (+ounces == 3) {
-            var total = "$.95";
-        }
-        if (+ounces > 3) {
-            var total = "$1.15";
-        }
-        
-    }
-
-    if (mailType == "metered") {
-        if (+ounces == 1) {
-            var total = "$.51";
-        }
-        if (+ounces == 2) {
-            var total = "$.71";
-        }
-        if (+ounces == 3) {
-            var total = "$.91";
-        }
-        if (+ounces > 3) {
-            var total = "$1.11";
-        }
-    }
-
-    if (mailType == "envelops") {
-        if (+ounces == 1) {
-            var total = "$1.00";
-        }
-        if (+ounces == 2) {
-            var total = "$1.20";
-        }
-        if (+ounces == 3) {
-            var total = "$1.40";
-        }
-        if (+ounces == 4) {
-            var total = "$1.60";
-        }
-        if (+ounces == 5) {
-            var total = "$1.80";
-        }
-        if (+ounces == 6) {
-            var total = "$2.00";
-        }
-        if (+ounces == 7) {
-            var total = "$2.20";
-        }
-        if (+ounces == 8) {
-            var total = "$2.40";
-        }
-        if (+ounces == 9) {
-            var total = "$2.60";
-        }
-        if (+ounces == 10) {
-            var total = "$2.80";
-        }
-        if (+ounces == 11) {
-            var total = "$3.00";
-        }
-        if (+ounces == 12) {
-            var total = "$3.20";
-        }
-        if (+ounces == 13) {
-            var total = "$3.40";
-        }
-    }
-
-    if (mailType == "retail") {
-        if (+ounces <= 4) {
-            var total = "$4.00";
-        }
-        if (+ounces >= 5 && +ounces < 9) {
-            var total = "$4.80"
-        }
-        if (+ounces >= 9 && +ounces < 13) {
-            var total = "$5.50"
-        }
-        if (+ounces >= 13) {
-            var total = "6.25"
-        }
-    }
-    //console.log(pounds);
-    console.log(ounces);
-    console.log(mailType);
-    console.log(total);
-
-    return total;
-}

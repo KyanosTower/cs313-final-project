@@ -5,25 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postal Rate Calculator</title>
+    <title>Pokemon Card Database</title>
 </head>
 
-<body>
-    <h1>Postal Rate Calculator</h1>
-    <form action="/getRate" method="GET">
-        <p>Please enter the weight of the item (Ounces).</p>
-        <input type="number" name="weight" step="any">
-        <p>Please select the type.</p>
-        <select name="mailType">
-            <option value="select">Select an option.</option>
-            <option value="stamped">Letters (Stamped)</option>
-            <option value="metered">Letters (Metered)</option>
-            <option value="envelops">Large Envelops (Flats)</option>
-            <option value="retail">First-Class Package Service - Retail</option>
+<body style="text-align: center;">
+    <h1>Welcome!</h1>
+    <div name="add">
+    <form action="/add" method="GET">
+        <p>Enter card data here.</p>
+        <p>(Note: This will not currently actually add data, it will just send the data and display a message saying it was sent properly.)</p>
+        <input type="text" name="cardName" value="Enter Card Name"/>
+        <br><input type="text" name="seriesName" value="Enter Series Name"/>
+        <br><select name="rarity">
+            <option value="select">Select a rarity</option>
+            <option value="common">Common</option>
+            <option value="uncommon">Uncommon</option>
+            <option value="rare">Rare</option>
+            <option value="holofoil">Holofoil Rare</option>
+            <option value="ultra">Ultra Rare</option>
+            <option value="secret">Secret Rare</option>
         </select>
-        <br>
-        <input type="submit" name="getRate" value="Get Rate" />
+        <br><select name="evolve">
+            <option value="canIt">Can it evolve?</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br><input type="submit" name="add" value="Add to database"/>
     </form>
+    </div>
 
 </body>
 
