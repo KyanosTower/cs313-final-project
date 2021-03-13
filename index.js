@@ -22,6 +22,7 @@ app.get("/add", (req, res) => {
         con.query(sql, [values], function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
+            print("w");
         });
     });
     res.render("pages/results", { answer: cardD });
