@@ -19,17 +19,17 @@ app.get('/', (req, res) => res.render('pages/index'))
 app.get('/form', (req, res) => res.render('pages/index'))
 
 app.get("/add", (req, res) => {
-    /*var card = {
+    var card = {
         name: req.body.cardName,
         series: req.body.seriesName,
         rarity: req.body.rarity,
         evolve: req.body.evolve
-    }*/
+    }
     /*connection.query('INSERT INTO card SET ?', card, function(err, resp) {
         if (err) throw err;
         res.send('Added to the Database');
     });*/
-    res.render("pages/results", { answer: 'Data added.' });
+    res.render("pages/results", { answer: card });
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
