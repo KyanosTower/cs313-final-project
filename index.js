@@ -1,16 +1,16 @@
 const express = require('express')
 const { createConnection } = require('net')
 const path = require('path')
-//var mysql = require('mysql');
+var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
 const app = express()
 
-/*var connection = mysql.createConnection({
+var connection = mysql.createConnection({
     host: 'localhost',
     database: 'card'
 });
 
-connection.connect();*/
+connection.connect();
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
