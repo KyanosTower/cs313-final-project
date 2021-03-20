@@ -1,9 +1,9 @@
-//const express = require('express');
+const express = require('express');
 const { createConnection } = require('net');
 const path = require('path');
 var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
-//const app = express();
+const app = express();
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -35,7 +35,7 @@ app.get('/form', (req, res) => res.render('pages/index'))
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
-var connection = mysql.createConnection({
+/*var connection = mysql.createConnection({
     host: 'localhost',
     database: 'card'
 });
@@ -54,4 +54,4 @@ function search(){
                 }
             });
     });
-}
+}*/
