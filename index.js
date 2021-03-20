@@ -19,7 +19,7 @@ app.get("/add", (req, res) => {
         var values = [
             [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve]
         ];
-        con.query(sql, [values], function (err, result) {
+        connection.query(sql, [values], function (err, result) {
             //if (err) throw err;
             console.log("1 record inserted");
         });
@@ -34,3 +34,18 @@ app.get('/', (req, res) => res.render('pages/index'))
 app.get('/form', (req, res) => res.render('pages/index'))
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
+
+function search(){
+    var searchString = $('txtSearch').val();
+    console.log('Searching for: ' + searchString);
+
+    connection.connect(function(err) {
+            var sql = "SELECT cardName, seriesName, rarity, evolve FROM card WHERE name = ?";
+            connection.query(sql, [searchString], function(err, result) {
+                if (result.Search && result.Search.length > 0){
+                    var resultList = $('#ulResults');
+                    resultList.empty();
+                }
+            });
+    });
+}

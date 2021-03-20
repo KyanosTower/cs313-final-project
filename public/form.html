@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="index.js"></script>
     <title>Pokemon Card Database</title>
 </head>
 
@@ -31,6 +33,15 @@
             </select>
             <br><input type="submit" name="add" value="Add to database" />
         </form>
+    </div>
+    <p>Search for Card Name:</p>
+    <input type="text" id="txtSearch"/>
+    <button onclick="search();">Search</button>
+
+    <div id="results">
+        <h2>Results</h2>
+        <ul id="ulResults">  
+        </ul>
     </div>
 
 </body>
