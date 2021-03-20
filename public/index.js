@@ -1,9 +1,9 @@
-const express = require('express');
+//const express = require('express');
 const { createConnection } = require('net');
 const path = require('path');
 var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
-const app = express();
+//const app = express();
 
 var connection = mysql.createConnection({
     host: 'localhost',
