@@ -35,6 +35,12 @@ app.get('/form', (req, res) => res.render('pages/index'))
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
+var connection = mysql.createConnection({
+    host: 'localhost',
+    database: 'card'
+});
+
+
 function search(){
     var searchString = $('txtSearch').val();
     console.log('Searching for: ' + searchString);
