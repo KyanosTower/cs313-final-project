@@ -13,14 +13,13 @@ var connection = mysql.createConnection({
 app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
     connection.connect(function (err) {
-        //if (err) throw err;
-        console.log("Connected!");
-        var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?";
-        connection.query(sql, [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve], function (err, result) {
-            //if (err) throw err;
-            console.log("1 record inserted");
-        });
-    });
+        if (err) throw err
+        console.log('You are now connected...')
+
+        connection.query('INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES (?, ?, ?, ?)', [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve], function (err, result) {
+            if (err) throw err
+        })
+    })
     res.render("pages/results", { answer: cardD });
 });
 
