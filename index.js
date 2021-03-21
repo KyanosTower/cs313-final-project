@@ -1,9 +1,9 @@
-const express = require('express')
-const { createConnection } = require('net')
-const path = require('path')
+const express = require('express');
+const { createConnection } = require('net');
+const path = require('path');
 var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
-const app = express()
+const app = express();
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -19,7 +19,11 @@ app.get("/add", (req, res) => {
         var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?";
         var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
         connection.query(sql, [values], function(err, result) {
-            console.log("Inserted.")
+            console.log("Inserted.");
+            console.log(result[0].cardName);
+            console.log(result[0].seriesName);
+            console.log(result[0].rarity);
+            console.log(result[0].evolve);
         });
     })
     res.render("pages/results", { answer: cardD });
