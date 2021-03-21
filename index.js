@@ -27,20 +27,22 @@ app.get("/add", (req, res) => {
     res.render("pages/results", { answer: cardD });
 });
 
-function search() {
-    var searchString = $('txtSearch').val();
-    console.log('Searching for: ' + searchString);
-
+app.get("search", (req, res) => {
+    var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
     connection.connect(function (err) {
-        var sql = "SELECT cardName, seriesName, rarity, evolve FROM 'card' WHERE name = ?";
-        connection.query(sql, [searchString], function (err, result) {
-            if (result.Search && result.Search.length > 0) {
-                var resultList = $('#ulResults');
-                resultList.empty();
-            }
+        //if (err) throw err;
+        console.log("Connected!");
+        var sql = "SELECT cardName, seriesName, rarity, evolve FROM card WHERE ?";
+        var values = [
+            req.query.txtSearch
+        ]
+        connection.query(sql, [values], function (err, result) {
+            //if (err) throw err;
+            console.log("Records Found.");
         });
     });
-}
+    res.render("public/form", { answer: results });
+});
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
