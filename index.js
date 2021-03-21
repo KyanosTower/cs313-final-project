@@ -20,10 +20,10 @@ app.get("/add", (req, res) => {
         var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
         connection.query(sql, [values], function(err, result) {
             console.log("Inserted.");
-            console.log(result[0].cardName);
-            console.log(result[0].seriesName);
-            console.log(result[0].rarity);
-            console.log(result[0].evolve);
+            console.log(result.cardName);
+            console.log(result.seriesName);
+            console.log(result.rarity);
+            console.log(result.evolve);
         });
     })
     res.render("pages/results", { answer: cardD });
