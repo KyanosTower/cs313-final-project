@@ -34,6 +34,7 @@
         </form>
     </div>
     <form action="">
+        <h2>Search</h2>
         <input type="text" onchange="showCard(this.value)">
     </form>
     <br>
@@ -52,7 +53,7 @@
                     document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             };
-            xhttp.open("GET", "getcard.php?q="+str, true);
+            xhttp.open("GET", "getcard.php", true);
             xhttp.send();
         }
     </script>
