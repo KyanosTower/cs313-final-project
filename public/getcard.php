@@ -38,8 +38,8 @@ echo "<table>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
-  echo "<td>" . $row['cardname'] . "</td>";
-  echo "<td>" . $row['seriesname'] . "</td>";
+  echo "<td>" . $row['cardName'] . "</td>";
+  echo "<td>" . $row['seriesName'] . "</td>";
   echo "<td>" . $row['rarity'] . "</td>";
   echo "<td>" . $row['evolve'] . "</td>";
   echo "</tr>";
