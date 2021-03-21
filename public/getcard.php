@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "card");
+$mysqli = new mysqli("localhost", NULL, NULL, "card");
 if($mysqli->connect_error) {
   exit('Could not connect');
 }
