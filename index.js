@@ -27,7 +27,7 @@ app.get("/add", (req, res) => {
     res.render("pages/results", { answer: cardD });
 });
 
-app.get("search", (req, res) => {
+app.get("/search", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
     connection.connect(function (err) {
         //if (err) throw err;
