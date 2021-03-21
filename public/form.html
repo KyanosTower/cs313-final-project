@@ -33,16 +33,29 @@
             <br><input type="submit" name="add" value="Add to database" />
         </form>
     </div>
-    <form action="/search" method="GET">
-        <p>Search for Card Name:</p>
-        <input type="text" id="txtSearch" />
-        <input type="submit">
+    <form action="">
+        <input type="text" onchange="showCard(this.value)">
     </form>
+    <br>
+    <div id="txtHint">Results</div>
 
-    <div id="results">
-        <h2>Results</h2>
-        <%= results>
-    </div>
+    <script>
+        function showCard(str) {
+            var xhttp;
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            }
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "getcard.php?q="+str, true);
+            xhttp.send();
+        }
+    </script>
 
 </body>
 
