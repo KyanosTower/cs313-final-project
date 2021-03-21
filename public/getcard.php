@@ -1,29 +1,51 @@
-<?php
-$mysqli = new mysqli("localhost", "username", "password", "card");
-if($mysqli->connect_error) {
-  exit('Could not connect');
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-$sql = "SELECT * FROM card WHERE cardName = ?";
+table, td, th {
+  border: 1px solid black;
+  padding: 5px;
+}
 
-$stmt = $mysqli->prepare($sql);
-$stmt->bind_param("s", $_GET['q']);
-$stmt->execute();
-$stmt->store_result();
-$stmt->bind_result($card, $series, $rarity, $evolve);
-$stmt->fetch();
-$stmt->close();
+th {text-align: left;}
+</style>
+</head>
+<body>
 
-echo "<table>";
-echo "<tr>";
-echo "<th>Card Name</th>";
-echo "<td>" . $card . "</td>";
-echo "<th>Series Name</th>";
-echo "<td>" . $series . "</td>";
-echo "<th>Rarity</th>";
-echo "<td>" . $rarity . "</td>";
-echo "<th>Evolve</th>";
-echo "<td>" . $evolve . "</td>";
-echo "</tr>";
+<?php
+$q = intval($_GET['q']);
+
+$con = mysqli_connect('localhost','username','password','card');
+if (!$con) {
+  die('Could not connect: ' . mysqli_error($con));
+}
+
+mysqli_select_db($con,"card");
+$sql="SELECT * FROM card WHERE cardName = $q";
+$result = mysqli_query($con,$sql);
+
+echo "<table>
+<tr>
+<th>Card Name</th>
+<th>Series Name</th>
+<th>Rarity</th>
+<th>Evolve?</th>
+</tr>";
+while($row = mysqli_fetch_array($result)) {
+  echo "<tr>";
+  echo "<td>" . $row['cardName'] . "</td>";
+  echo "<td>" . $row['seriesName'] . "</td>";
+  echo "<td>" . $row['rarity'] . "</td>";
+  echo "<td>" . $row['evolve'] . "</td>";
+  echo "</tr>";
+}
 echo "</table>";
+mysqli_close($con);
 ?>
+</body>
+</html>
