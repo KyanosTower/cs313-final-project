@@ -1,10 +1,10 @@
 <?php
-$mysqli = new mysqli("localhost", NULL, NULL, "card");
+$mysqli = new mysqli("localhost", "username", "password", "card");
 if($mysqli->connect_error) {
   exit('Could not connect');
 }
 
-$sql = "SELECT cardName, seriesName, rarity, evolve FROM card WHERE cardName = ?";
+$sql = "SELECT * FROM card WHERE cardName = ?";
 
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("s", $_GET['q']);
