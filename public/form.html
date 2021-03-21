@@ -53,7 +53,7 @@
                     document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             };
-            xhttp.open("GET", "getcard.php", true);
+            xhttp.open("GET", "getcard.php?q=" + str, true);
             xhttp.send();
         }
     </script>
