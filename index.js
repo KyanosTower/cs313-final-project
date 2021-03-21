@@ -17,7 +17,7 @@ app.get("/add", (req, res) => {
         console.log('You are now connected...')
 
         var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?";
-        var values = [[req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve]];
+        var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
         connection.query(sql, [values], function(err, result) {
             console.log("Inserted.")
         });
