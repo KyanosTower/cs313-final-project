@@ -16,7 +16,7 @@ app.get("/add", (req, res) => {
         if (err) throw err
         console.log('You are now connected...')
 
-        connection.query('INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES (?, ?, ?, ?)', [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve], function (err, result) {
+        connection.query("INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES (?, ?, ?, ?)", [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve], function (err, result) {
             if (err) throw err
         })
     })
