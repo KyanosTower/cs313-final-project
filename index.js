@@ -31,7 +31,7 @@ var connection = mysql.createConnection({
 
 app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
-    connection.connect(function (err) {
+    /*connection.connect(function (err) {
         //if (err) throw err
         console.log('You are now connected...');
 
@@ -41,13 +41,13 @@ app.get("/add", (req, res) => {
             console.log("Inserted");
             console.log(result.rows);
         });
-    });
-    client.query('SELECT * FROM card', (err,res) => {
+    });*/
+    client.query("INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ('Test', 'Test', 'Test', 'Test')", (err,res) => {
         if (err){
             console.log(err.stack);
         }
         else{
-            console.log(res.rows);
+            console.log(":(");
         }
     });
     client.end();
