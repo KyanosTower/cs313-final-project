@@ -6,7 +6,9 @@ const PORT = process.env.PORT || 5500
 const app = express();
 const { Client } = require("pg");
 
-var connectionString = proccess.env.DATABASE_URL;
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
+const connectionString = process.env.DATABASE_URL;
 
 const client = new Client({
     connectionString: connectionString, ssl: {
