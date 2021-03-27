@@ -45,6 +45,7 @@ app.get("/add", (req, res) => {
             console.log(JSON.stringify(row));
         }
     });
+    client.end();
     res.render("pages/results", { answer: cardD });
 });
 
