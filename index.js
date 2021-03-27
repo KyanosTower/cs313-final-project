@@ -4,6 +4,16 @@ const path = require('path');
 var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
 const app = express();
+const { Pool } = require("pg");
+
+const connectionString = proccess.env.DATABASE_URL;
+
+const pool = new Pool({
+    connectionString: connectionString, ssl: {
+        rejectUnauthorized: false
+    }
+});
+pool.connect();
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -18,7 +28,7 @@ app.get("/add", (req, res) => {
 
         var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?";
         var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
-        connection.query(sql, [values], function(err, result) {
+        pool.query(sql, values, function(err, result) {
             console.log("Inserted");
         });
     })
