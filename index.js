@@ -4,16 +4,23 @@ const path = require('path');
 var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
 const app = express();
-const { Pool } = require("pg");
+const { Client } = require("pg");
 
 const connectionString = proccess.env.DATABASE_URL;
 
-const pool = new Pool({
+const client = new Client({
     connectionString: connectionString, ssl: {
         rejectUnauthorized: false
     }
 });
-pool.connect();
+client.connect();
+
+client.query('SELECT * FROM card', (err,res) => {
+    if (err) throw err;
+    for (let row of res.row) {
+        console.log
+    }
+})
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -32,6 +39,12 @@ app.get("/add", (req, res) => {
             console.log("Inserted");
         });
     })
+    client.query('SELECT * FROM card', (err,res) => {
+        if (err) throw err;
+        for (let row of res.row) {
+            console.log(JSON.stringify(row));
+        }
+    });
     res.render("pages/results", { answer: cardD });
 });
 
