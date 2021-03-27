@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5500
 const app = express();
 const { Client } = require("pg");
 
-const connectionString = proccess.env.DATABASE_URL;
+var connectionString = proccess.env.DATABASE_URL;
 
 const client = new Client({
     connectionString: connectionString, ssl: {
