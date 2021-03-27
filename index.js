@@ -33,7 +33,7 @@ app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
     var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?"
     var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
-    client.query(sql, values, (err,res) => {
+    client.query(sql, [values], (err,res) => {
         if (err){
             console.log(err.stack);
         }
