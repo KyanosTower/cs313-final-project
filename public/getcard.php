@@ -26,7 +26,7 @@ if (!$con) {
 }
 
 mysqli_select_db($con,"card");
-$sql="SELECT * FROM card WHERE cardname = '".$q."'";
+$sql="SELECT * FROM card";
 $result = mysqli_query($con,$sql);
 
 echo "<table>
