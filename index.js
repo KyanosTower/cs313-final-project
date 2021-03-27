@@ -28,7 +28,7 @@ app.get("/add", (req, res) => {
 
         var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?";
         var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
-        pool.query(sql, values, function(err, result) {
+        connection.query(sql, values, function(err, result) {
             console.log("Inserted");
         });
     })
