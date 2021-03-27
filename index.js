@@ -40,7 +40,7 @@ app.get("/add", (req, res) => {
         });
     })
     client.query('SELECT * FROM card', (err,res) => {
-        if (err) throw err;
+        //if (err) throw err;
         for (let row of res.row) {
             console.log(JSON.stringify(row));
         }
