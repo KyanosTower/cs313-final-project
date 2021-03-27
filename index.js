@@ -35,9 +35,9 @@ app.get("/add", (req, res) => {
         //if (err) throw err
         console.log('You are now connected...');
 
-        var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ?";
+        var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ('Test', 'Test', 'Test', 'Test')";
         var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
-        client.query(sql, values, function(err, result) {
+        client.query(sql, function(err, result) {
             console.log("Inserted");
             console.log(result.rows);
         });
