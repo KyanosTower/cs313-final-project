@@ -35,20 +35,15 @@ app.get("/add", (req, res) => {
     //var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
     client.query({
         text: 'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES' +
-        '($1,$2,$3,$4)',
+            '($1,$2,$3,$4)',
         values: [
-            req.query.cardName, 
-            req.query.seriesName, 
-            req.query.rarity, 
+            req.query.cardName,
+            req.query.seriesName,
+            req.query.rarity,
             req.query.evolve
         ]
-    }, (err,res) => {
-        if (err){
-            console.log(err.stack);
-        }
-        else{
-            console.log(":)");
-        }
+    }, (err, res) => {
+        console.log(":)");
     });
     client.end();
     res.render("pages/results", { answer: cardD });
