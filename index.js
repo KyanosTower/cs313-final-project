@@ -7,8 +7,6 @@ const app = express();
 const { Client } = require("pg");
 const { query } = require('express');
 
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-
 const connectionString = process.env.DATABASE_URL;
 
 const client = new Client({
@@ -18,44 +16,18 @@ const client = new Client({
 });
 client.connect();
 
-/*client.query('SELECT * FROM card', (err,res) => {
-    if (err) throw err;
-    for (let row of res.row) {
-        console.log
-    }
-});*/
-
 app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
-    //var sql = 'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ("Test2", "Test", "Test", "Test")';
-    //var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
     client.query(
-        'INSERT into card (cardName, seriesName, rarity, evolve) VALUES($1, $2, $3, $4)', 
-        [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve], 
-        function(err, result) {
+        'INSERT into card (cardName, seriesName, rarity, evolve) VALUES($1, $2, $3, $4)',
+        [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve],
+        function (err, result) {
             console.log(":(");
-            }
-        );
-    client.end();
+            client.end();
+        }
+    );
     res.render("pages/results", { answer: cardD });
 });
-
-/*app.get("/search", (req, res) => {
-    var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
-    connection.connect(function (err) {
-        //if (err) throw err;
-        console.log("Connected!");
-        var sql = "SELECT cardName, seriesName, rarity, evolve FROM card WHERE ?";
-        var values = [
-            req.query.txtSearch
-        ]
-        connection.query(sql, [values], function (err, result) {
-            //if (err) throw err;
-            console.log("Records Found.");
-        });
-    });
-    res.render("public/form", { answer: results });
-});*/
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
