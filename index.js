@@ -27,11 +27,15 @@ client.connect();
 
 app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
-    var sql = 'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ("Test2", "Test", "Test", "Test")';
+    //var sql = 'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ("Test2", "Test", "Test", "Test")';
     //var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
-    client.query(sql, (err, res)=>{
-        console.log(req.query.cardName);
-    });
+    client.query(
+        'INSERT into card (cardName, seriesName, rarity, evolve) VALUES($1, $2, $3, $4)', 
+        [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve], 
+        function(err, result) {
+            console.log(":(");
+            }
+        );
     client.end();
     res.render("pages/results", { answer: cardD });
 });
