@@ -26,19 +26,11 @@
   <?php
   $q = intval($_GET['q']);
 
-  $host='localhost';
-  $username='';
-  $password='';
-  $dbname='card';
+  $dbconn = pg_connect("host=localhost dbname=card")
+    or die('Could not connect: ' . pg_last_error());
 
-  $con = mysqli_connect($host, $username, $password, $dbname);
-  if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-  }
-
-  mysqli_select_db($con, "card");
   $sql = "SELECT (cardName, seriesName, rarity, evolve) FROM card";
-  $result = mysqli_query($con, $sql);
+  $result = pg_query($sql);
 
   echo "<table><tr><th>Card Name</th><th>Series Name</th><th>Rarity</th><th>Evolve?</th></tr>";
   while ($row = mysqli_fetch_array($result)) {
