@@ -24,11 +24,6 @@ client.connect();
     }
 });*/
 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    database: 'card'
-});
-
 app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
     //var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ('req.query.cardName', 'req.query.seriesName', 'req.query.rarity', req.query.evolve')"
@@ -37,10 +32,10 @@ app.get("/add", (req, res) => {
         text: 'insert into card (cardName,seriesName,rarity,evolve) values' +
         '($1,$2,$3,$4)',
         values: [
-            req.query.cardName,
-            req.query.seriesName,
-            req.query.rarity,
-            req.query.evolve
+            'Test2',
+            'Test',
+            'Test',
+            'Test'
         ]
     }, (err, res) => {
         console.log(req.query.cardName);
