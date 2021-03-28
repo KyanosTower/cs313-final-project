@@ -34,8 +34,8 @@ app.get("/add", (req, res) => {
     //var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ('req.query.cardName', 'req.query.seriesName', 'req.query.rarity', req.query.evolve')"
     //var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
     client.query({
-        text: 'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES' +
-            '($1,$2,$3,$4)',
+        text: 'insert into card (cardName,seriesName,rarity,evolve) values' +
+        '($1,$2,$3,$4)',
         values: [
             req.query.cardName,
             req.query.seriesName,
@@ -43,7 +43,7 @@ app.get("/add", (req, res) => {
             req.query.evolve
         ]
     }, (err, res) => {
-        console.log(":)");
+        console.log(req.query.cardName);
     });
     client.end();
     res.render("pages/results", { answer: cardD });
