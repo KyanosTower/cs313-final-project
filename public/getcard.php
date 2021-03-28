@@ -33,7 +33,7 @@
   $result = pg_query($sql);
 
   echo "<table><tr><th>Card Name</th><th>Series Name</th><th>Rarity</th><th>Evolve?</th></tr>";
-  while ($row = mysqli_fetch_array($result)) {
+  while ($row = pg_fetch_row($result)) {
     echo "<tr>";
     echo "<td>" . $row['cardName'] . "</td>";
     echo "<td>" . $row['seriesName'] . "</td>";
@@ -42,7 +42,7 @@
     echo "</tr>";
   }
   echo "</table>";
-  mysqli_close($con);
+  pg_close($dbconn);
   ?>
 </body>
 
