@@ -5,6 +5,7 @@ var mysql = require('mysql');
 const PORT = process.env.PORT || 5500
 const app = express();
 const { Client } = require("pg");
+const { query } = require('express');
 
 //process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
@@ -26,10 +27,9 @@ client.connect();
 
 app.get("/add", (req, res) => {
     var cardD = "The card's name is " + req.query.cardName + ", it is from the series " + req.query.seriesName + " and it's rarity is " + req.query.rarity + ". Can it evolve? " + req.query.evolve + ".";
-    //var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ('req.query.cardName', 'req.query.seriesName', 'req.query.rarity', req.query.evolve')"
+    var sql = 'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ("Test2", "Test", "Test", "Test")';
     //var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
-    client.query('INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES("Test2", "Test", "Test", "Test")', 
-        function(err, res){
+    client.query(sql, (err, res)=>{
         console.log(req.query.cardName);
     });
     client.end();
