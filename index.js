@@ -29,7 +29,7 @@ app.get("/add", (req, res) => {
     //var sql = "INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES ('req.query.cardName', 'req.query.seriesName', 'req.query.rarity', req.query.evolve')"
     //var values = [req.query.cardName, req.query.seriesName, req.query.rarity, req.query.evolve];
     client.query(
-        'INSERT INTO card (cardName, seriesName, rarity, evolve) VALUES($1, $2, $3, $4)',
+        'INSERT INTO card ("cardName", "seriesName", "rarity", "evolve") VALUES($1, $2, $3, $4)',
         ['Test2','Test','Test','Test'], 
         function(err, res){
         console.log(req.query.cardName);
