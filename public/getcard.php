@@ -30,7 +30,7 @@
     or die('Could not connect: ' . pg_last_error());
 
   $sql = "SELECT (cardName, seriesName, rarity, evolve) FROM card";
-  $result = pg_query($sql);
+  $result = pg_query($db, $sql);
 
   echo "<table><tr><th>Card Name</th><th>Series Name</th><th>Rarity</th><th>Evolve?</th></tr>";
   while ($row = pg_fetch_row($result)) {
