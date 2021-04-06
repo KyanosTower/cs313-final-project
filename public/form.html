@@ -9,14 +9,20 @@
     <title>Pokemon Card Database</title>
 </head>
 
-<body style="text-align: center;">
+<header style="color: chocolate; text-align: center;">
+<h1>
+    Pokemon Card Database
+</h1>
+</header>
+
+<body style="text-align: center; color: blanchedalmond;">
     <h1>Welcome!</h1>
     <div name="add">
         <form action="/add" method="GET">
             <p>Enter card data here.</p>
             <input type="text" name="cardName" value="Enter Card Name" />
-            <br><input type="text" name="seriesName" value="Enter Series Name" />
-            <br><select name="rarity">
+            <br><br><input type="text" name="seriesName" value="Enter Series Name" />
+            <br><br><select name="rarity">
                 <option value="select">Select a rarity</option>
                 <option value="common">Common</option>
                 <option value="uncommon">Uncommon</option>
