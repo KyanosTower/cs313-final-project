@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+  <main>
+<div class="cartView">
+  <h1>Get Orders By Customer:</h1>
+
+  <div class="flex">
+    <form action="orderDetail" method="post">
+        <select name="userid" id="userid" class="select" required>
+        <option value="">Please Select a Customer</option>
+        <option value='<%= customer[0].userid %>'><%= customer[0].username %></option>
+        <option value='<%= customer[1].userid %>'><%= customer[1].username %> </option>
+        <option value='<%= customer[2].userid %>'><%= customer[2].username %></option>
+        <option value='<%= customer[3].userid %>'><%= customer[3].username %> </option>
+            </select>
+              <input id="button" class="button" type="submit" value="Submit">
+              <!-- <button type="button" onclick="getResults()">Get Orders</button> -->
+      <br><br>
+      </form>
+  </div>
+</main>
+
+</body>
+
+</html>
